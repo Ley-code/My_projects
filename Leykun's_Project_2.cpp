@@ -72,7 +72,7 @@ int main(){
         }
         for(int i = 0; i < numstud; i++){  //data storage of the students Grade and Gradepoint
             for(int j = 0; j<numsubj; j++){
-                if(subjmark[i][j]>= 85){
+                if(subjmark[i][j]>= 85 && subjmark[i][j]<=100){
                     subjgrade[i][j] = "A ";
                     gradepoint[i][j] = 4;
                 }else if(subjmark[i][j] <40){
@@ -90,9 +90,12 @@ int main(){
                 }else if(subjmark[i][j]>=50 && subjmark[i][j] < 60){
                     subjgrade[i][j] = "C ";
                     gradepoint[i][j] = 2;
-                }else{
+                }else if(subjmark[i][j]>=40 && subjmark[i][j] < 50){
                     subjgrade[i][j] = "D ";
                     gradepoint[i][j] = 1.5;
+                }else{
+                    subjgrade[i][j] = "NA ";
+                    gradepoint[i][j] = 0;
                 }
             }
         }
