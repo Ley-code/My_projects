@@ -3,9 +3,6 @@ using namespace std;
 int main(){
     int numque,numchoice;
     string question,response,typeofquestions;
-
-    
-
     cout << "Welcome to the Quiz Fun project!!\nPlease chose your question type from the list below.\nA.choose the best answer\nB.Fill in the blanks\ninput: ";
     cin >> typeofquestions;
     if(typeofquestions == "A"){
@@ -99,10 +96,5 @@ int main(){
         }
         //----------------------------------------------------
         
-    }
-    
-    
-
-   
-    
+    }    
 }
