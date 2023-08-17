@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import javax.sound.sampled.*;
@@ -9,6 +10,7 @@ public class AudioPlayer {
     File songfolder = new File("C:\\Users\\pc\\Downloads\\Music\\");
 
     Scanner kb = new Scanner(System.in);
+
     System.out.println("----------Welcome to Leykun Audioplayer---------");
     System.out.println();
     System.out.println("Choose the name of the song you want to play");
@@ -21,18 +23,25 @@ public class AudioPlayer {
     System.out.println("----------Actions----------\n P = play    S = stop    O = Slect another song   E = exit player");
     boolean loopstarter = true;
     while(loopstarter){
-        
-        System.out.print("Enter the number of the song: ");
-        String nameofsong = audiolists[kb.nextInt()-1];
-        kb.nextLine();
-        
+        String response;
+        boolean miniloop = true;
+        String nameofsong;
+        try{
+            System.out.print("Enter the number of the song: ");
+            nameofsong = audiolists[kb.nextInt()-1];
+        }catch (InputMismatchException e){
+            System.out.println("use a number!");
+            kb.nextLine();
+            System.out.print("Enter the number of the song: ");
+            nameofsong = audiolists[kb.nextInt()-1];
+        }
         
         File songs = new File("C:\\Users\\pc\\Downloads\\Music\\" + nameofsong) ;
         AudioInputStream audio = AudioSystem.getAudioInputStream(songs);
         Clip clip = AudioSystem.getClip();
         clip.open(audio);
-        String response;
-        boolean miniloop = true;
+
+        kb.nextLine();
         do {
             System.out.print(">");
             response = kb.nextLine();
@@ -51,9 +60,8 @@ public class AudioPlayer {
                 break;
             }
         }while(miniloop);
-        kb.close();
-        }
-    }
-    
-    
+    }kb.close();
+
+    }  
 }
+
